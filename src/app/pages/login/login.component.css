@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+
+.container-main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-layout {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+#img-ranger-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-ranger {
+  width: 100%;
+}
+
+#form-home {
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(218, 218, 218);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 60px;
+}
+
+#logo-ford-container {
+  margin-bottom: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-ford-home {
+  width: 28%;
+}
+
+#boas-vindas {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+#boas-vindas h3 {
+  font-size: 2rem;
+  color: #1351d8;
+}
+
+.container-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  width: 80%;
+}
+
+.label-input {
+  width: 80%;
+  position: relative;
+}
+
+.input-home {
+  width: 100%;
+  padding: 10px;
+  padding-left: 35px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: -1px -1px 2px rgb(201, 201, 201);
+}
+
+.label-input i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  pointer-events: none;
+}
+
+.label-input .fa-user,
+.label-input .fa-lock {
+  left: 10px;
+}
+
+#icone-info {
+  right: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #009929;
+  position: absolute;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-top: 5px;
+}
+
+.btn-container p {
+  margin: 0;
+}
+
+.btn-home {
+  width: 80%;
+  padding: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #1351d8;
+  color: white;
+  font-size: 1rem;
+}
+
+.btn-home:hover {
+  background-color: #1b357e;
+}

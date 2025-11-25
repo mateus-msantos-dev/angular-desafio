@@ -1,0 +1,73 @@
+<main class="container-main">
+
+  <section class="form-layout">
+
+    <div id="img-ranger-container">
+      <img class="img-ranger" src="img/ranger.png" alt="Ranger">
+    </div>
+
+    <form id="form-home" [formGroup]="form" (ngSubmit)="submit()">
+
+      <div id="logo-ford-container">
+        <img class="logo-ford-home" src="img/ford.png" alt="Logo Ford" />
+      </div>
+
+      <div id="boas-vindas">
+        <h3>Boas-vindas</h3>
+      </div>
+
+      <div class="container-input">
+
+        <!-- Email -->
+        <label class="label-input">
+          <i class="fa-regular fa-user"></i>
+          <input
+            class="input-home"
+            type="email"
+            formControlName="nome"
+            placeholder="Insira seu e-mail"
+          >
+          <i id="icone-info" class="fa-solid fa-circle-info icone"></i>
+        </label>
+
+        <!-- Senha -->
+        <label class="label-input">
+          <i class="fa-solid fa-lock"></i>
+          <input
+            class="input-home"
+            type="password"
+            formControlName="senha"
+            placeholder="Insira sua senha"
+          >
+        </label>
+
+        <!-- Logar automaticamente -->
+        <div class="btn-container">
+          <p>Logar automaticamente</p>
+
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              formControlName="lembrar"
+              id="switchCheckDefault"
+            >
+          </div>
+        </div>
+
+        <!-- Erro -->
+        <p *ngIf="errorMessage" class="text-danger fw-bold">
+          {{ errorMessage }}
+        </p>
+
+        <!-- Botão -->
+        <button class="btn-home" type="submit">
+          Enviar
+        </button>
+
+      </div>
+
+    </form>
+  </section>
+
+</main>
