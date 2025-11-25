@@ -1,1 +1,53 @@
-<p>home works!</p>
+<header class="header">
+
+  <div class="header-actions">
+      <button type="button" id="menu-toggle" class="icon-btn" (click)="toggleMenu()">
+          <i class="fa-solid fa-bars icon"></i>
+      </button>
+
+      <button type="button" class="icon-btn botao-usuario" (click)="toggleUserMenu($event)">
+          <i class="fa-solid fa-circle-user icon"></i>
+      </button>
+  </div>
+
+  <!-- MENU LATERAL -->
+  <nav class="side-menu" [class.active]="menuOpen">
+      <ul>
+          <li><img src="/assets/img/ford.png" alt="Logo Ford"></li>
+          <li><a routerLink="/home">Home</a></li>
+          <li><a routerLink="/dashboard">Dashboard</a></li>
+      </ul>
+  </nav>
+
+  <!-- MENU USUÁRIO -->
+  <div class="logout-menu" [class.is-visible]="userMenuOpen">
+      <div class="usuario-perfil">
+          <button type="button" class="icon-btn botao-usuario">
+              <i class="fa-solid fa-circle-user icon"></i>
+          </button>
+          <p>Usuário</p>
+      </div>
+
+      <div class="logout-item">
+          <a class="logout-a" (click)="logout()">Logout</a>
+      </div>
+  </div>
+
+</header>
+
+<!-- OVERLAY -->
+<div class="overlay" 
+     [class.active]="menuOpen || userMenuOpen"
+     (click)="closeAllMenus()"></div>
+
+<main class="main-content">
+
+  <div class="box box-header">
+      <h4>Sistema de dados FORD</h4>
+  </div>
+
+  <div class="box box-welcome">
+      <h4>Seja bem-vindo(a)!</h4>
+  </div>
+
+</main>

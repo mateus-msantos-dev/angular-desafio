@@ -1,0 +1,184 @@
+:host {
+    display: block; 
+    height: 100vh;
+    width: 100vw; 
+    background-image: url('/assets/img/ranger.png'); 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+    background-attachment: fixed;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* HEADER */
+.header {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background: transparent;
+    z-index: 10;
+}
+
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 25px 0;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.icon {
+    font-size: 2rem;
+    color: gray;
+}
+
+/* MENU LATERAL */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 15vw;
+    min-width: 200px;
+    height: 100vh;
+    background: #fff;
+    padding-top: 5px;
+    z-index: 40;
+    transition: left 0.3s ease;
+}
+
+.side-menu.active {
+    left: 0;
+}
+
+.side-menu ul {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu li {
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.side-menu img {
+    width: 9vw;
+    min-width: 100px;
+}
+
+.side-menu a {
+    display: block;
+    padding: 10px 0;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.side-menu a:hover {
+    background: gray;
+    color: white;
+}
+
+/* MENU USUÁRIO */
+.logout-menu {
+    position: absolute;
+    top: 15%;
+    right: 1%;
+    width: 200px;
+    border: 1px solid #ccc;
+    background: #fff;
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.logout-menu.is-visible {
+    display: flex;
+}
+
+.usuario-perfil {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #eee;
+}
+
+.logout-item {
+    text-align: center;
+    padding: 10px;
+}
+
+.logout-a {
+    text-decoration: none;
+    font-weight: bold;
+    color: green;
+    cursor: pointer;
+}
+
+/* OVERLAY */
+.overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* CONTEÚDO PRINCIPAL */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 17%;
+}
+
+/* BOXES */
+.box {
+    width: 30%;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    border-left: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+}
+
+.box-header {
+    background: rgba(223, 217, 217, 0.87);
+    border-top: 2px solid #ccc;
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+}
+
+.box-welcome {
+    background: rgba(255, 255, 255, 0.77);
+    height: 48vh;
+    border-bottom: 2px solid #ccc;
+}
+
+.box h4 {
+    margin-left: 10px;
+}
+
+.box-welcome h4 {
+    color: #1351d8;
+    font-size: 1.2rem;
+}
