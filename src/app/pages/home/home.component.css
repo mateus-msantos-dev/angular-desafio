@@ -135,11 +135,13 @@
     visibility: hidden;
     transition: opacity 0.3s ease;
     z-index: 5;
+    pointer-events: none;
 }
 
 .overlay.active {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
 }
 
 /* CONTEÚDO PRINCIPAL */

@@ -1,1 +1,155 @@
-<p>dashboard works!</p>
+<header class="header">
+
+  <div class="header-actions">
+      <button type="button" id="menu-toggle" class="icon-btn" (click)="toggleMenu()">
+          <i class="fa-solid fa-bars icon"></i>
+      </button>
+
+      <button type="button" class="icon-btn botao-usuario" (click)="toggleUserMenu($event)">
+          <i class="fa-solid fa-circle-user icon"></i>
+      </button>
+  </div>
+
+  <!-- MENU LATERAL -->
+  <nav class="side-menu" [class.active]="menuOpen">
+      <ul>
+          <li><img src="/assets/img/ford.png" alt="Logo Ford"></li>
+          <li><a routerLink="/home">Home</a></li>
+          <li><a routerLink="/dashboard">Dashboard</a></li>
+      </ul>
+  </nav>
+
+  <!-- MENU USUÁRIO -->
+  <div class="logout-menu" [class.is-visible]="userMenuOpen">
+      <div class="usuario-perfil">
+          <button type="button" class="icon-btn botao-usuario">
+              <i class="fa-solid fa-circle-user icon"></i>
+          </button>
+          <p>Usuário</p>
+      </div>
+
+      <div class="logout-item">
+          <a class="logout-a" (click)="logout()">Logout</a>
+      </div>
+  </div>
+
+</header>
+
+<!-- OVERLAY -->
+<div class="overlay" 
+     [class.active]="menuOpen || userMenuOpen"
+     (click)="closeAllMenus()"></div>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<main class="main">
+
+    <!-- TÍTULO -->
+    <div class="titulo-container">
+        <h2 class="titulo-h2">Dashboard FORD</h2>
+    </div>
+
+    <!-- CARDS -->
+    <div class="container-dashboard">
+
+        <!-- CARD VEÍCULO (VIN decide tudo) -->
+        <div class="container-card">
+            <div class="container-card-titulo">
+                <p>Veículo</p>
+            </div>
+
+            <div class="container-card-numericos">
+                <p class="container-card-veiculos">
+                    {{ selectedVehicleData?.vehicle ?? '---' }}
+                </p>
+            </div>
+        </div>
+
+        <!-- TOTAL VENDAS -->
+        <div class="container-card">
+            <div class="container-card-titulo">
+                <p>Total de Vendas</p>
+            </div>
+            <div class="container-card-numericos">
+                <p class="numero">{{ selectedVehicleData?.volumetotal ?? '---' }}</p>
+                <p class="sufixo">Unid.</p>
+            </div>
+        </div>
+
+        <!-- CONECTADOS -->
+        <div class="container-card">
+            <div class="container-card-titulo">
+                <p>Conectados</p>
+            </div>
+            <div class="container-card-numericos">
+                <p class="numero">{{ selectedVehicleData?.connected ?? '---' }}</p>
+                <p class="sufixo">Unid.</p>
+            </div>
+        </div>
+
+        <!-- UPDATES -->
+        <div class="container-card">
+            <div class="container-card-titulo">
+                <p>Update Software</p>
+            </div>
+            <div class="container-card-numericos">
+                <p class="numero">{{ selectedVehicleData?.softwareUpdates ?? '---' }}</p>
+                <p class="sufixo">Unid.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- IMAGEM DO CARRO -->
+    <div class="container-img" *ngIf="selectedVehicleData?.img">
+        <img [src]="selectedVehicleData.img" alt="Imagem do veículo">
+    </div>
+
+</main>
+
+<!-- FOOTER / TABELA -->
+<footer class="footer">
+    <table class="data-table">
+
+        <thead>
+            <tr>
+                <th>Código - Vin</th>
+                <th>Odômetro</th>
+                <th>Nível de Combustível</th>
+                <th>Status</th>
+                <th>Lat.</th>
+                <th>Long.</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <!-- INPUT VIN -->
+                <td>
+                    <input type="text"
+                           (keyup.enter)="onVinEnter()"
+                           [(ngModel)]="vinInput"
+                           placeholder="Insira o código VIN">
+                </td>
+
+                <!-- DADOS APÓS API -->
+                <td>{{ odometro ?? '---' }}</td>
+                <td>{{ nivelCombustivel ?? '---' }}%</td>
+                <td>{{ status ?? '---' }}</td>
+                <td>{{ lat ?? '---' }}</td>
+                <td>{{ long ?? '---' }}</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td class="td-footer">o</td>
+                <td class="td-footer"></td>
+                <td class="td-footer"></td>
+                <td class="td-footer"></td>
+                <td class="td-footer"></td>
+                <td class="td-footer"></td>
+            </tr>
+        </tfoot>
+
+    </table>
+</footer>
