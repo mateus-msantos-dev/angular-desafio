@@ -14,24 +14,19 @@ import { VehicleService } from '../../services/vehicle.service';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 
-  /** MENU */
   menuOpen = false;
   userMenuOpen = false;
 
-  /** VIN */
   vinInput: string = '';
 
-  /** Dados da tabela */
   odometro: number | null = null;
   nivelCombustivel: number | null = null;
   status: string | null = null;
   lat: number | null = null;
   long: number | null = null;
 
-  /** Dados dos cards (baseados no VIN) */
   selectedVehicleData: any = null;
 
-  /** Lista completa de veículos para cruzar os dados */
   allVehicles: any[] = []; 
 
   constructor(
@@ -44,7 +39,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   // -----------------------------
   ngOnInit() {
     document.addEventListener('click', this.handleClickOutside);
-    // 1. Carrega os dados dos cards (Ranger, Mustang, etc.)
+  
     this.loadAllVehicles();
   }
 
@@ -93,7 +88,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   async loadAllVehicles() {
     try {
       const resp = await this.vehicleService.getVehicles(); 
-      // Assume que a API retorna { vehicles: [...] }
+  
       this.allVehicles = resp.vehicles || [];
 
     } catch (err) {
@@ -124,25 +119,23 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     try {
-      // 2. Chama API para dados da TABELA (retorna odometro, status, etc. + o ID)
+
       const respTabela = await this.vehicleService.getVehicleData(this.vinInput);
       
-      // 3. Cruza os dados: usa o ID retornado para achar os dados completos dos Cards
       const vehicleForCards = this.allVehicles.find(v => v.id === respTabela.id);
 
       if (vehicleForCards) {
-        // Mescla: Cards (vehicle, img, etc.) + Tabela (odometro, status, etc.)
+    
         this.selectedVehicleData = {
           ...vehicleForCards, 
           ...respTabela       
         };
       } else {
-        // Se a correlação falhar, usa apenas os dados da tabela
+    
         this.selectedVehicleData = respTabela;
         console.warn("Não foi possível correlacionar o VIN com os dados dos Cards. Verifique se o 'id' existe.");
       }
 
-      // 4. Preenche as variáveis da tabela
       this.odometro = respTabela.odometro ?? null;
       this.nivelCombustivel = respTabela.nivelCombustivel ?? null;
       this.status = respTabela.status ?? null;
